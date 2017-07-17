@@ -1,0 +1,30 @@
+{% extends "inventory.html" %}
+{% block inventory_content %}
+<form action={{ url_for('offerings') }} method="post" name="institution">
+  <fieldset>
+    <h4>Offerings By Institution</h4>
+    {{form.hidden_tag()}}
+    <p>
+      <table class="table">
+	<tr>
+	  <td>{{ form.institution_select_field() }}</td>
+	  <td><input class="btn btn-primary" type="submit" value="Select"></td>
+	</tr>
+      </table>
+    </p>
+  </fieldset>
+</form>
+{% if courses %}
+            <table>
+              <tr valign="top">
+                <h4>Course Offerings</h4>
+              </tr>
+              {% for course in courses %}
+              <tr>
+                <td>{{course.rubric}} {{course.number}} - {{course.name}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+{% endif %}
+
+{% endblock %}

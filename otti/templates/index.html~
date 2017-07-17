@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero-unit">
+	<h2>Online Texas Transfer Inventory</h2>
+	<p>Many good words here. The best words, really. Because pretty websites need good words to be very good websites.</p>
+    </div>
+{% endblock %}

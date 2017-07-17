@@ -1,0 +1,18 @@
+{% extends "inventory.html" %}
+{% block inventory_content %}
+<form action={{ url_for('offerings') }} method="post" name="institution">
+  <fieldset>
+    <legend>Offerings By Institution</legend>
+    {{form.hidden_tag()}}
+    <p>
+      <label>Institutions</label>
+      <table>
+	<tr>
+	  <td>{{ form.institution_select_field() }}</td>
+	  <td><input class="btn btn-primary" type="submit" value="Select"></td>
+	</tr>
+      </table>
+    </p>
+  </fieldset>
+</form>
+{% endblock %}
