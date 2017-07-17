@@ -1,6 +1,7 @@
 from otti import db
 
 # Use base class from SQLAlchemy
+# TODO: Add reference to sheet names from TTI sheet
 class Institution(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
