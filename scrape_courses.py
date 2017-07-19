@@ -63,11 +63,13 @@ def get_math_offerings(xl_workbook,sheet_names):
 dict = get_math_offerings(xl_workbook,sheet_names)
 df = pd.DataFrame.from_dict(dict,orient='index').transpose()
 
-for course in df[' Angelo State']:
-    if course:
-        rubric, number = course.split(' ')[:2]
-        name = ' '.join(course.split(' ')[2:])
-        course = models.Course(name=name,rubric=rubric,number=number,institution_id=3)
-        db.session.add(course)
+for sheet_name in df:
+    institution_id = models.Institution.query.filter_by(sheet_name=sheet_name).first().id
+    for course in df[sheet_name]:
+        if course:
+            rubric, number = course.split(' ')[:2]
+            name = ' '.join(course.split(' ')[2:])
+            course = models.Course(name=name,rubric=rubric,number=number,institution_id=institution_id)
+            db.session.add(course)
 
 db.session.commit()
