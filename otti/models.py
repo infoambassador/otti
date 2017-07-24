@@ -12,8 +12,8 @@ class Institution(db.Model):
 
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), index=True, unique=True)
-    number = db.Column(db.String(64), index=True, unique=True)
+    name = db.Column(db.String(64), index=True, unique=False)
+    number = db.Column(db.String(64), index=True, unique=False)
     rubric = db.Column(db.String(64), index=True, unique=False)
     institution_id = db.Column(db.Integer, db.ForeignKey('institution.id'))
 
